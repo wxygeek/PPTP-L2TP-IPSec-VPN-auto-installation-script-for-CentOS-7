@@ -193,7 +193,7 @@ conn L2TP-PSK-noNAT
     dpddelay=40
     dpdtimeout=130
     dpdaction=clear
-    ike=3des-sha1,aes-sha1,aes256-sha1,aes256-sha2_256 
+    ike=3des-sha1,aes-sha1,aes256-sha1,aes256-sha2_256
     phase2alg=3des-sha1,aes-sha1,aes256-sha1,aes256-sha2_256
     sha2-truncbug=yes
 # For example connections, see your distribution's documentation directory,
@@ -317,7 +317,7 @@ proxyarp
 #debug
 #dump
 lock
-nobsdcomp 
+nobsdcomp
 novj
 novjccomp
 nologfd
@@ -377,6 +377,7 @@ sysctl -w net.ipv4.conf.default.send_redirects=0
 sysctl -w net.ipv4.conf.all.accept_redirects=0
 sysctl -w net.ipv4.conf.default.accept_redirects=0
 
+rm -f /etc/sysctl.conf
 cat >>/etc/sysctl.conf<<EOF
 
 net.ipv4.ip_forward = 1
@@ -390,6 +391,7 @@ net.ipv4.conf.default.accept_redirects = 0
 EOF
 
 #允许防火墙端口
+rm -f /usr/lib/firewalld/services/pptpd.xml
 cat >>/usr/lib/firewalld/services/pptpd.xml<<EOF
 <?xml version="1.0" encoding="utf-8"?>
 <service>
@@ -399,6 +401,7 @@ cat >>/usr/lib/firewalld/services/pptpd.xml<<EOF
 </service>
 EOF
 
+rm -f /usr/lib/firewalld/services/l2tpd.xml
 cat >>/usr/lib/firewalld/services/l2tpd.xml<<EOF
 <?xml version="1.0" encoding="utf-8"?>
 <service>
