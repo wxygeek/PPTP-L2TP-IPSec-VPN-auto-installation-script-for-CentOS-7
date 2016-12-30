@@ -145,7 +145,7 @@ yum update -y
 yum install epel-release -y
 
 #安装依赖的组件
-yum install -y openswan ppp pptpd xl2tpd wget
+yum install -y openswan ppp pptpd xl2tpd wget firewalld ipsec-tools
 
 #创建ipsec.conf配置文件
 rm -f /etc/ipsec.conf
